@@ -1,0 +1,58 @@
+[
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 1,
+      "fields": {
+        "nome": "Medicamento",
+        "abreviacao": "ME"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 2,
+      "fields": {
+        "nome": "Empréstimo de equipamento",
+        "abreviacao": "EE"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 3,
+      "fields": {
+        "nome": "Cesta básica",
+        "abreviacao": "CB"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 4,
+      "fields": {
+        "nome": "Suplemento alimentar",
+        "abreviacao": "SA"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 5,
+      "fields": {
+        "nome": "Complemento alimentar",
+        "abreviacao": "CA"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 6,
+      "fields": {
+        "nome": "Prótese feminina",
+        "abreviacao": "PF"
+      }
+    },
+    {
+      "model": "pacientes.tipoauxilio",
+      "pk": 7,
+      "fields": {
+        "nome": "Item de convalescença",
+        "abreviacao": "IC"
+      }
+    }
+]

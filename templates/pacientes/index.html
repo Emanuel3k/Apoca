@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>APOCA - Home</title>
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/libs/chart.js/Chart.min.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block content %}
+<input type="hidden" id="url-filtro" value="{% url 'pacientes:filtrar_info_gerais' %}">
+
+<div class="row">
+  <div class="col-lg-12">
+    {% include 'utilitarios/mensagens.html' %}
+    <div class="card card-body">
+      <div class="align-self-center container">
+        <div class="mt-4 mt-lg-0">
+          <h1 class="text-center mb-3">Informações gerais</h1>
+
+          <!-- <p class="text-muted font-weight-medium mb-1">Filtros</p> -->
+          <div class="d-md-flex justify-content-center">
+              <div class="col-lg-3 col-xl-2 pl-0 mb-3">
+                <label for="data-inicio" class="text-muted mb-0">De</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="bx bx-calendar"></i>
+                      </span>
+                    </div>
+                    <input type="text" id="data-inicio" class="form-control" value="{{ data_inicio|date:'d/m/Y' }}">
+                </div>
+              </div>
+              <div class="col-lg-3 col-xl-2 pl-0 mb-3">
+                <label for="data-fim" class="text-muted mb-0">Até</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="bx bx-calendar"></i>
+                      </span>
+                    </div>
+                    <input type="text" id="data-fim" class="form-control">
+                </div>
+              </div>
+
+              <div class="col-md-3 pl-0 mb-3">
+                <label for="cidade" class="text-muted mb-0">Cidade</label>
+                <select name="cidade" id="cidade" class="form-control">
+                  <option value="Total" selected>Total</option>
+                  {% for cidade in cidades %}
+                    <option value="{{ cidade.nome }}">{{ cidade.nome }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+          </div>
+
+          <hr class="mt-1 mb-4" />
+          <div class="d-flex justify-content-center mb-3">
+            <div class="col-md-3 text-center">
+              <p class="card-title mb-2">Pacientes no sistema</p>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-3 text-center">
+              <div>
+                <p class="text-muted mb-2">Ativos</p>
+                <h5 class="text-success" id="paciente-ativo"></h5>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+                <p class="text-muted mb-2">Inativos</p>
+                <h5 class="text-danger" id="paciente-inativo"></h5>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+                <p class="text-muted mb-2">Total</p>
+                <h5 class="text-primary" id="paciente-total"></h5>
+              </div>
+            </div>
+          </div>
+
+          <hr class="mt-4 mb-4" />
+          <div class="d-flex justify-content-center mb-3">
+            <div class="col-md-3 text-center">
+              <p class="card-title mb-2">Auxílios entregues</p>
+            </div>
+          </div>
+          <div class="row justify-content-center" id="tipo_auxilios">
+            <!--Auxilios entregues-->
+          </div>
+
+          <hr class="mt-4 mb-4" />
+          <div class="d-flex justify-content-center mb-3">
+            <div class="col-md-3 text-center">
+              <p class="card-title mb-2">Consultas e exames</p>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-md-3 text-center">
+              <div>
+                <p class="text-muted mb-2">Consultas</p>
+                <h5 class="mb-3" id="consulta"></h5>
+              </div>
+            </div>
+            <div class="col-md-3 text-center">
+              <div>
+                <p class="text-muted mb-2">Exames</p>
+                <h5 class="mb-3" id="exame"></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-4">
+    <div class="card card-body">
+      <h4 class="text-center">Últimos pacientes cadastrados</h4>
+
+      <div class="table-responsive mt-3">
+        <table class="table table-centered table-nowrap table-hover mb-0">
+          <thead class="thead-light">
+            <tr>
+                <th></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for paciente in pacientes %}
+              <tr>
+                <td>
+                  {% if paciente.foto %}
+                    <img src="{{ paciente.foto.url }}" alt="{{ paciente.nome }}" class="rounded-circle avatar-xs">
+                  {% else %}
+                    <img src="{% static 'assets/images/users/user-img.png' %}" alt="Imagem usuário" class="rounded-circle avatar-xs">
+                  {% endif %}
+                </td>
+                <td>
+                  <p class="mb-0">{{ paciente.nome|truncatechars:20 }}</p>
+                </td>
+                <td>
+                  <ul class="list-inline font-size-20 contact-links mb-0">
+                    {% if user.is_assistente_social %}
+                      <li class="list-inline-item px-1 mb-2">
+                          <a href="{% url 'pacientes:editar_paciente' pk=paciente.pk %}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bx bx-edit"></i></a>
+                      </li>
+                    {% endif %}
+                    <li class="list-inline-item px-1">
+                        <a href="{% url 'pacientes:perfil_paciente' pk=paciente.pk %}" data-toggle="tooltip" data-placement="top" title="Perfil"><i class="bx bx-user-circle"></i></a>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="card card-body text-center">
+      <h4 class="mb-4">Atividades diárias</h4>
+
+      <div class="d-md-flex justify-content-around">
+        <div>
+          <p class="text-muted mb-3">Pacientes cadastrados</p>
+          <h5 class="mb-3">{{ atv_diaria.pacientes }}</h5>
+        </div>
+        <div>
+          <p class="text-muted mb-3">Auxílios entregues</p>
+          <h5 class="mb-3">{{ atv_diaria.auxilios }}</h5>
+        </div>
+        <div>
+          <p class="text-muted mb-3">Consultas realizadas</p>
+          <h5 class="mb-3">{{ atv_diaria.consultas }}</h5>
+        </div>
+        <div>
+          <p class="text-muted mb-3">Exames cadastrados</p>
+          <h5 class="mb-3">{{ atv_diaria.exames }}</h5>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-body">
+      <canvas id="grafico-etnias"></canvas>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+  <script src="{% static 'assets/libs/chart.js/Chart.min.js' %}"></script>
+  <script src="{% static 'javascript/home.js' %}"></script>
+
+  <script>
+    var tema = sessionStorage.getItem('is_visited');
+    var cor = (tema == 'dark-mode-switch') ? '#fff' : '#333';
+    Chart.defaults.global.defaultFontColor = cor;
+    var ctx = document.getElementById('grafico-etnias');
+    var graficoEtnia = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Branca', 'Preta', 'Parda', 'Amarela', 'Indígena', 'Não informado'],
+            datasets: [{
+                label: 'Raças',
+                data: [
+                  {% for raca in racas %}
+                      {{ raca }},
+                  {% endfor %}
+                ],
+                backgroundColor: [
+                    'rgba(115, 43, 237, 0.8)',
+                    'rgba(65, 45, 247, 0.8)',
+                    'rgba(52, 82, 225, 0.8)',
+                    'rgba(45, 132, 247, 0.8)',
+                    'rgba(153, 102, 255, 0.8)',
+                    'rgba(43, 177, 237, 0.8)',
+                    'rgba(115, 43, 237, 0.8)',
+                    'rgba(65, 45, 247, 0.8)',
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+  </script>
+{% endblock %}

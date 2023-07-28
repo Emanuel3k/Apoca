@@ -1,0 +1,52 @@
+[
+    {
+        "model": "pacientes.consulta",
+        "pk": 1,
+        "fields": {
+            "tipo": 1,
+            "data": "2020-11-15",
+            "exames": "Raio-X",
+            "paciente": 1
+        }
+    },
+    {
+        "model": "pacientes.consulta",
+        "pk": 2,
+        "fields": {
+            "tipo": 1,
+            "data": "2020-11-15",
+            "exames": null,
+            "paciente": 2
+        }
+    },
+    {
+        "model": "pacientes.consulta",
+        "pk": 3,
+        "fields": {
+            "tipo": 2,
+            "data": "2020-11-20",
+            "exames": null,
+            "paciente": 3
+        }
+    },
+    {
+        "model": "pacientes.consulta",
+        "pk": 4,
+        "fields": {
+            "tipo": 1,
+            "data": "2020-11-25",
+            "exames": "Tumografia",
+            "paciente": 1
+        }
+    },
+    {
+        "model": "pacientes.consulta",
+        "pk": 5,
+        "fields": {
+            "tipo": 3,
+            "data": "2020-11-26",
+            "exames": null,
+            "paciente": 2
+        }
+    }
+]

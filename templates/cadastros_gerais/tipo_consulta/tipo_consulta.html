@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Tipo de Consulta</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Tipos de consultas" imagem="/static/images/SVG/tipos_consultas.svg" %}
+
+        <div class="card-body">
+            <div class="d-flex justify-content-center mb-4">
+                <div class="ml-md-auto">
+                    <a href="{% url 'pacientes:cadastrar_tipo_consulta' %}" class="btn btn-primary">Cadastrar tipo de consulta</a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-tipo">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for tipo_consulta in tipos_consulta %}
+                        <tr>
+                            <td>{{ tipo_consulta.nome }}</td>
+                            <td>
+                                <ul class="list-inline font-size-20 contact-links mb-0">
+                                    <li class="list-inline-item px-2">
+                                        <a 
+                                            href="{% url 'pacientes:editar_tipo_consulta' pk=tipo_consulta.pk %}" 
+                                            data-toggle="tooltip" 
+                                            data-placement="top" 
+                                            title="Editar"
+                                        >
+                                            <i class="bx bx-edit"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item px-2">
+                                        <a
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Excluír"
+                                            onclick="abrirModal({{ tipo_consulta.pk }})"
+                                        >
+                                            <i class="bx bx-trash"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para a deleção -->
+    {% include 'utilitarios/modal_delecao.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+    {% include 'utilitarios/configuracao_data_table.html' with tipo="tipo" %}
+{% endblock %}

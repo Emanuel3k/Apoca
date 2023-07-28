@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>APOCA - Cadastro Paciente</title>
+{% endblock %}
+
+{% block content %}
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Cadastro de paciente" imagem="/static/images/SVG/cadastro_de_paciente.svg" classes="mt-2" %}
+
+        {% include 'utilitarios/mensagens.html' %}
+
+        <div class="card-body">
+            <!-- Foto do paciente -->
+            <div class="row justify-content-center mt-4 mb-3">
+                <img id="foto-cadastro" src="{% static 'assets/images/users/user-img.png' %}" class="d-block" alt="Foto paciente" />
+            </div>
+    
+            {% crispy form %}
+    
+            {% include 'utilitarios/modal_cancelamento.html' %}
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="{% static 'javascript/formatar_cpf.js' %}"></script>
+    <script src="{% static 'javascript/formatar_cep.js' %}"></script>
+    <script src="{% static 'javascript/formatar_renda.js' %}"></script>
+    <script src="{% static 'javascript/toggle_metastase.js' %}"></script>
+
+    <script>
+        $('#limpar-foto').click(function(event) {
+            event.preventDefault();
+            $('#foto-cadastro').attr('src', '/static/assets/images/users/user-img.png');
+        });
+
+        function lerURL(input) {
+            if (input.files && input.files[0]) {
+                console.log(input.files[0]);
+
+                var leitor = new FileReader();
+
+                leitor.onload = function (e) {
+                    $('#foto-cadastro')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(200)
+                        .css('border-radius', '400px');
+                };
+
+                leitor.readAsDataURL(input.files[0]);
+            }
+        }
+
+        flatpickr("#id_data_cadastro", {
+            dateFormat: "d/m/Y",
+            locale: "pt",
+            defaultDate: "today"
+        });
+
+        flatpickr("#id_data_nascimento", {
+            dateFormat: "d/m/Y",
+            locale: "pt",
+            allowInput: true
+        });
+    </script>
+{% endblock %}

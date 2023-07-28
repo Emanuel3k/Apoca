@@ -1,0 +1,707 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load l10n %}
+
+
+{% block title %}
+    <title>APOCA - Perfil Paciente</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/owl.carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/owl.carousel/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock css %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+    <input type="hidden" value="{% url 'pacientes:filtrar_auxilios' pk=paciente.pk %}" id="url_filtrar_auxilios" />
+
+    <div class="row">
+        <div class="col-xl-4">
+            <!-- Card perfil -->
+            <div class="card overflow-hidden">
+                <div class="bg-soft-primary">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="text-primary p-3">
+                                <h3 class="text-primary">Perfil paciente</h3>
+                            </div>
+                        </div>
+                        <div class="col-5 align-self-end">
+                            <img src="{% static 'images/SVG/perfil.svg' %}" alt="" class="img-fluid">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="avatar-md profile-user-wid">
+                                {% if paciente.foto %}
+                                    <img class="img-thumbnail avatar-md rounded-circle" src="{{ paciente.foto.url }}" alt="Header Avatar">
+                                {% else %}
+                                    <img class="img-thumbnail avatar-md rounded-circle" src="{% static 'assets/images/users/user-img.png' %}" alt="Header Avatar">
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12">
+                            <div class="pt-3 card-perfil">
+                                <h6 class="mb-0">Nome</h6>
+                                <p class="text-muted mb-3">{{ paciente.nome }}</p>
+
+                                <div class="d-md-flex">
+                                    <div class="d-md-block mr-md-4">
+                                        <h6 class="mb-0">CPF</h6>
+                                        <p class="text-muted mb-3">{{ paciente.cpf }}</p>
+                                    </div>
+                                    <div class="d-md-block">
+                                        <h6 class="mb-0">RG</h6>
+                                        <p class="text-muted mb-3">{{ paciente.rg }}</p>
+                                    </div>
+                                </div>
+
+                                {% if paciente.orgao_expedidor %}
+                                    <h6 class="mb-0">Orgão expedidor</h6>
+                                    <p class="text-muted mb-3">{{ paciente.orgao_expedidor }}</p>
+                                {% endif %}
+
+                                <h6 class="mb-0">Sexo</h6>
+                                <p class="text-muted mb-3">{{ paciente.sexo }}</p>
+
+                                <h6 class="mb-0">Raça</h6>
+                                <p class="text-muted mb-3">{{ paciente.raca }}</p>
+
+                                <h6 class="mb-0">Nome da mãe</h6>
+                                <p class="text-muted mb-3">{{ paciente.nome_mae }}</p>
+
+                                {% if paciente.conjuges %}
+                                    <h6 class="mb-0">Conjugê</h6>
+                                    <p class="text-muted mb-3">{{ paciente.conjuge }}</p>
+                                {% endif %}
+
+                                <h6 class="mb-0">Data de nascimento</h6>
+                                <p class="text-muted mb-3">{{ paciente.data_nascimento|date:'d/m/Y' }}</p>
+
+                                {% if paciente.cartao_sus %}
+                                    <h6 class="mb-0">Cartão SUS</h6>
+                                    <p class="text-muted mb-3">{{ paciente.cartao_sus }}</p>
+                                {% endif %}
+
+                                <h6 class="mb-0">Data de cadastro</h6>
+                                <p class="text-muted mb-3" id="data-cadastro">{{ paciente.data_cadastro|date:'d/m/Y' }}</p>
+
+                                {% if user.is_assistente_social %}
+                                    <a href="{% url 'pacientes:editar_paciente' pk=paciente.id %}" class="btn btn-sm btn-warning mr-4 mb-2">
+                                        Editar
+                                    </a>
+                                    <!-- Botão para desativar/ativar paciente -->
+                                    {% if paciente.ativo %}
+                                        <a href="#" class="btn btn-danger btn-sm mb-2" data-toggle="modal" data-target="#modal-status">
+                                            Desativar paciente
+                                        </a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#modal-status">
+                                            Ativar paciente
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do card -->
+
+
+            <!-- Card financeiro e familiar -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Financeiro e familiar</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap mb-0">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Profissão:</th>
+                                    <td>{{ paciente.profissao }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Composição familiar:</th>
+                                    <td>{{ paciente.composicao_familiar }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Casa própria:</th>
+                                    <td>{{ paciente.casa_propria|yesno:"Sim,Não" }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Renda familiar:</th>
+                                    <td>R$ {{ paciente.renda_familiar|floatformat:2 }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Renda per capita:</th>
+                                    <td>R$ {{ paciente.renda_per_capita|floatformat:2 }}</td>
+                                </tr>
+                                {% if paciente.observacao_renda %}
+                                    <tr>
+                                        <th scope="row">Observações:</th>
+                                        <td>{{ paciente.observacao_renda }}</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do card -->
+
+            <!-- Card de contato -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Contato</h4>
+                    <div class="table-responsive">
+                        <table class="table table-nowrap mb-0">
+                            <tbody>
+                                {% for telefone in telefones %}
+                                    <tr>
+                                        <th scope="row">Telefone {{ forloop.counter }}:</th>
+                                        <td>({{ telefone.ddd }}) {{ telefone.telefone }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Fim do card -->
+
+            <!-- Card de responsáveis -->
+            {% if responsaveis %}
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Responsáveis</h4>
+                        <div class="table-responsive">
+                            <table class="table table-nowrap mb-0">
+                                <tbody>
+                                    {% for responsavel in responsaveis %}
+                                        <tr>
+                                            <th scope="row">Responsável {{ forloop.counter }}:</th>
+                                            <td>{{ responsavel.nome }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            <!-- Fim do card -->
+        </div>
+
+        <div class="col-xl-8">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">Auxilios aprovados</p>
+                                    {% for auxilio in paciente.tipo_auxilio_aprovado.all %}
+                                        <a
+                                        href="#" class="badge badge-soft-primary font-size-11 m-1"
+                                        data-toggle="tooltip" data-placement="top" title="{{ auxilio.nome }}"
+                                        >
+                                            {{ auxilio.abreviacao }}
+                                        </a>
+                                    {% empty %}
+                                        <h6>Nenhum auxílio aprovado</h6>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="mini-stat-icon avatar-sm align-self-center rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-check-circle font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">Consultas</p>
+                                    <h4 class="mb-0">{{ consultas.registros.count }}</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-plus-medical font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mini-stats-wid">
+                        <div class="card-body">
+                            <div class="media">
+                                <div class="media-body">
+                                    <p class="text-muted font-weight-medium">Exames</p>
+                                    <h4 class="mb-0">{{ exames.count }}</h4>
+                                </div>
+
+                                <div class="avatar-sm align-self-center mini-stat-icon rounded-circle bg-primary">
+                                    <span class="avatar-title">
+                                        <i class="bx bx-receipt font-size-24"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <!-- Card de auxílios -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex align-items-center mb-3">
+                                <h4 class="card-title">Auxílios entregues</h4>
+                                {% if user.is_assistente_social %}
+                                    <a href="{% url 'pacientes:cadastrar_auxilio' pk=paciente.id %}" class="btn btn-primary btn-sm ml-auto">
+                                        Entregar auxílio
+                                    </a>
+                                {% endif %}
+                            </div>
+                            <p class="text-muted font-weight-medium mb-1">Filtragem por data</p>
+                            <div class="d-flex">
+                                <div class="col-md-3 pl-0">
+                                    <label for="data-inicio" class="text-muted mb-0">De</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                              <i class="bx bx-calendar"></i>
+                                          </span>
+                                        </div>
+                                        <input type="text" id="data-inicio" class="form-control" value="{{ data_inicio|date:'d/m/Y' }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 pl-0">
+                                    <label for="data-fim" class="text-muted mb-0">Até</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text">
+                                              <i class="bx bx-calendar"></i>
+                                          </span>
+                                        </div>
+                                        <input type="text" id="data-fim" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="align-self-center container">
+                                <div class="text-lg-center mt-4 mt-lg-0">
+                                    <hr class="mt-4 mb-4" />
+                                    <div class="row justify-content-center" id="tipo_auxilios_user">
+                                        <!-- <div class="col-md-3 text-center">
+                                            <div>
+                                                <p class="text-muted mb-2">Total</p>
+                                                <h5 class="mb-4" id="total_auxilios"></h5>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim do card -->
+                </div>
+                <div class="col-xl-12">
+                    <!-- Card de consultas -->
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-sm-flex align-items-center mb-4">
+                                <h4 class="card-title mb-sm-0">Consultas</h4>
+                                <a href="{% url 'pacientes:cadastrar_consulta' pk=paciente.id %}" class="btn btn-sm btn-primary ml-auto">
+                                    Cadastrar consulta
+                                </a>
+                                {% if consultas.registros %}
+                                    <button class="btn btn-sm btn-success ml-3" data-toggle="modal" data-target="#modal-consultas">Ver todas consultas</button>
+                                {% endif %}
+                            </div>
+
+                            <div class="row justify-content-center">
+                                {% for consulta in consultas.contador %}
+                                    <div class="col-md-3 text-center">
+                                        <div>
+                                            <p class="text-muted mb-2">{{ consulta.tipo__nome }}</p>
+                                            <h5 class="mb-4">{{ consulta.quantidade }}</h5>
+                                        </div>
+                                    </div>
+                                {% empty %}
+                                    <p class="text-muted text-center mb-4">Nenhuma consulta registrada</p>
+                                {% endfor %}
+                            </div>
+
+                            <div class="d-sm-flex align-items-center mb-0">
+                                <h4 class="card-title mb-sm-0">Exames</h4>
+                                <a href="{% url 'pacientes:cadastrar_exame' pk=paciente.id %}" class="btn btn-sm btn-primary ml-auto">
+                                    Cadastrar exame
+                                </a>
+                                {% if exames %}
+                                    <button class="btn btn-sm btn-success ml-3" data-toggle="modal" data-target="#modal-exames">Ver todos exames</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim do card -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Card de endereço -->
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-4">Endereço</h4>
+                        <div class="table-responsive">
+                            <table class="table table-nowrap mb-0">
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">Logradouro:</th>
+                                        <td>{{ paciente.logradouro }}</td>
+                                    </tr>
+                                    {% if paciente.numero %}
+                                        <tr>
+                                            <th scope="row">Número:</th>
+                                            <td>{{ paciente.numero }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    <tr>
+                                        <th scope="row">Complemento:</th>
+                                        <td>
+                                        {% if paciente.complemento %}
+                                            {{ paciente.complemento }}
+                                        {% else %}
+                                            Não informado
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Referência:</th>
+                                        <td>
+                                        {% if paciente.referencia %}
+                                            {{ paciente.referencia }}
+                                        {% else %}
+                                            Não informado
+                                        {% endif %}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Bairro:</th>
+                                        <td>{{ paciente.bairro }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Cidade:</th>
+                                        <td>{{ paciente.cidade }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">CEP:</th>
+                                        <td>{{ paciente.cep }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fim do card -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <!-- Card da doença -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Doença</h4>
+                            <div class="table-responsive">
+                                <table class="table table-nowrap mb-0">
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">Diagnóstico:</th>
+                                            <td>{{ paciente.doenca }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Referência hospitalar:</th>
+                                            <td>{{ paciente.referencia_doenca }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Metástase:</th>
+                                            <td>{{ paciente.metastase|yesno:"Sim,Não" }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Diabetes:</th>
+                                            <td>{{ paciente.diabetes|yesno:"Sim,Não" }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Outros casos na familia:</th>
+                                            <td>{{ paciente.outros_casos|yesno:"Sim,Não" }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Fim do card -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Card da linha do tempo -->
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Linha do tempo</h4>
+                    <div class="hori-timeline">
+                        <div class="owl-carousel owl-theme navs-carousel events" id="timeline-carousel">
+                            {% for evento in linha_do_tempo %}
+                                <div class="item event-list">
+                                    <div>
+                                        <div class="event-date">
+                                            <div class="text-primary mb-1">{{ evento.data }}</div>
+                                            <h5 class="mb-4">{{ evento.grupo }}</h5>
+                                        </div>
+                                        <div class="event-down-icon" data-toggle="modal" data-target="#modal-{{forloop.counter}}">
+                                            <i class="bx bx-info-circle h1 text-primary down-arrow-icon"></i>
+                                        </div>
+                                        <div class="mt-3 px-3">
+                                            <p class="text-muted">{{ evento.tipo }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% empty %}
+                                <h4 class="text-muted">Nenhum registro</h4>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ativação/desativação do paciente -->
+    <div class="modal fade" id="modal-status" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Atenção</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    {% if status %}
+                        <h5 class="mb-0">Você tem certeza que gostaria de: ativar o paciente?</h5>
+                    {% else %}
+                        <h5 class="mb-0">Você tem certeza que gostaria de: desativar o paciente?</h5>
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger px-3 mr-3" data-dismiss="modal">Não</button>
+                    <form method="post">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary px-3">Sim</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de consultas realizada -->
+    <div class="modal fade" id="modal-consultas" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-xl dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Consultas realizadas</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap table-hover" id="tabela-consultas">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Observação</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                {% for consulta in consultas.registros %}
+                                    <tr>
+                                        <td>{{ consulta.tipo }}</td>
+                                        <td>{{ consulta.data|date:'d/m/Y' }}</td>
+                                        <td>{{ consulta.observacao }}</td>
+                                        <td>
+                                            <ul class="list-inline font-size-20 contact-links mb-0">
+                                                <li class="list-inline-item px-2">
+                                                    <a
+                                                        href="{% url 'pacientes:editar_consulta' pk=consulta.pk %}"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Editar"
+                                                    >
+                                                        <i class="bx bx-edit"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de exames realizados -->
+    <div class="modal fade" id="modal-exames" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-xl dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Exames cadastrados</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap table-hover" id="tabela-consultas">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Tipo</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                {% for exame in exames %}
+                                    <tr>
+                                        <td>{{ exame.tipo }}</td>
+                                        <td>{{ exame.data|date:'d/m/Y' }}</td>
+                                        <td>
+                                            <ul class="list-inline font-size-20 contact-links mb-0">
+                                                <li class="list-inline-item px-2">
+                                                    <a
+                                                        href="{% url 'pacientes:editar_exame' pk=exame.pk %}"
+                                                        data-toggle="tooltip"
+                                                        data-placement="top"
+                                                        title="Editar"
+                                                    >
+                                                        <i class="bx bx-edit"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modais da linha do tempo -->
+    {% for evento in linha_do_tempo %}
+        <div class="modal fade" id="modal-{{forloop.counter}}" data-backdrop="static" data-keyboard="false" aria-hidden="true">
+            <div class="modal-dialog dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Detalhes {{ evento.grupo }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    {% if evento.grupo == 'Auxilio' %}
+                        <div class="modal-body">
+                            <p class="text-muted mb-0">Tipo</p>
+                            <h6>{{ evento.tipo }}</h6>
+
+                            {% if evento.tipo == 'Medicamento' %}
+                                <p class="text-muted mb-0">Medicamento</p>
+                                <h6>{{ evento.nome }}</h6>
+                            {% elif evento.tipo == 'Empréstimo de equipamento' %}
+                                <p class="text-muted mb-0">Equipamento</p>
+                                <h6>{{ evento.nome }}</h6>
+                            {% endif %}
+
+                            <p class="text-muted mb-0">Data de entrega</p>
+                            <h6>{{ evento.data|date:'d/m/Y' }}</h6>
+                            <p class="text-muted mb-0">Horário de entrega</p>
+                            <h6>{{ evento.horario|date:'H:i' }}</h6>
+                            <p class="text-muted mb-0">Quantidade</p>
+                            <h6>{{ evento.quantidade }}</h6>
+
+                            {% if evento.data_devolucao %}
+                                <p class="text-muted mb-0">Data de devolução</p>
+                                <h6>{{ evento.data_devolucao|date:'d/m/Y' }}</h6>
+                                <p class="text-muted mb-0">Horário de devolução</p>
+                                <h6>{{ evento.hora_devolucao|date:'H:i' }}</h6>
+                            {% endif %}
+
+                            {% if evento.objeto.observacao %}
+                                <p class="text-muted mb-0">Observações</p>
+                                <h6 class="mb-0">{{ evento.objeto.observacao }}</h6>
+                            {% endif %}
+                        </div>
+                    {% elif evento.grupo == 'Exame' %}
+                        <div class="modal-body">
+                            <p class="text-muted mb-0">Exame</p>
+                            <h6>{{ evento.tipo }}</h6>
+                            <p class="text-muted mb-0">Data</p>
+                            <h6>{{ evento.data|date:'d/m/Y' }}</h6>
+                        </div>
+                    {% elif evento.grupo == 'Consulta' %}
+                        <div class="modal-body">
+                            <p class="text-muted mb-0">Tipo</p>
+                            <h6>{{ evento.tipo }}</h6>
+                            <p class="text-muted mb-0">Data</p>
+                            <h6>{{ evento.data|date:'d/m/Y' }}</h6>
+                            {% if evento.observacao  %}
+                                <p class="text-muted mb-0">Observação</p>
+                                <h6>{{ evento.observacao }}</h6>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block js %}
+    <!-- owl.carousel js -->
+    <script src="{% static 'assets/libs/owl.carousel/owl.carousel.min.js' %}"></script>
+    <!-- timeline init js -->
+    <script src="{% static 'assets/js/pages/timeline.init.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'javascript/perfil_paciente.js' %}"></script>
+
+{% endblock js %}

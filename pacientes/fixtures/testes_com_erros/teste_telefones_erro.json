@@ -1,0 +1,92 @@
+[
+  {
+    "model": "pacientes.telefone",
+    "pk": 1,
+    "fields": {
+      "paciente": 110,
+      "ddd": "47",
+      "telefone": "996156906"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 2,
+    "fields": {
+      "paciente": 1,
+      "ddd": "00",
+      "telefone": "9876352AB"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 3,
+    "fields": {
+      "paciente": 7,
+      "ddd": "A4",
+      "telefone": "ABCDEFG6"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 4,
+    "fields": {
+      "paciente": -10,
+      "ddd": "+-¨%$",
+      "telefone": "999827364"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 5,
+    "fields": {
+      "paciente": 8,
+      "ddd": "84",
+      "telefone": "}{?^`(*&¨"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 6,
+    "fields": {
+      "paciente": 4,
+      "ddd": "-47",
+      "telefone": "-982647280"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 7,
+    "fields": {
+      "paciente": 6,
+      "ddd": "0",
+      "telefone": "0"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 8,
+    "fields": {
+      "paciente": 5,
+      "ddd": "95",
+      "telefone": "36234918*&"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 9,
+    "fields": {
+      "paciente": 3,
+      "ddd": "-10*",
+      "telefone": "*222#"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 10,
+    "fields": {
+      "paciente": -0,
+      "ddd": "*-B",
+      "telefone": "29382397#"
+    }
+  }
+]

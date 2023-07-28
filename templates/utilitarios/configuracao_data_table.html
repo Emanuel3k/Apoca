@@ -1,0 +1,31 @@
+<script>
+    $(document).ready(function(){
+            $('#tabela-{{ tipo }}').DataTable(
+                {
+                    language: {
+                        search: "Pesquisa:",
+                        searchPlaceholder: "Procure por um {{ tipo }}",
+                        info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                        infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                        infoFiltered: "(filtrado do total de _MAX_ registros)",
+                        emptyTable: "Nenhum {{ tipo }} registrado",
+                        zeroRecords: "Nenhum resultado encontrado",
+                        processing: "Processando...",
+                        loadingRecords: "Carregando...",
+                        lengthMenu: "Mostrar _MENU_ registros",
+                        paginate: {
+                            first: "Primeiro",
+                            last: "Último",
+                            next: "<i class=\"mdi mdi-chevron-right\">",
+                            previous: "<i class=\"mdi mdi-chevron-left\">"
+                        }
+                    }
+                }
+            );
+
+            // Retirando classes do limitador e do filtro
+            $('#tabela-{{ tipo }}_length').children().children().removeClass('custom-select-sm');
+            $('#tabela-{{ tipo }}_length').children().children().removeClass('form-control-sm');
+            $('#tabela-{{ tipo }}_filter').children().children().removeClass('form-control-sm');
+        });
+</script>

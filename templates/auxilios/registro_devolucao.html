@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Devolução de equipamento</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden">
+        {% include 'utilitarios/cabecalho.html' with titulo="Devolução de equipamento" imagem="/static/images/SVG/devolucao_equipamento.svg" classes="my-2" %}
+
+        <div class="card-body">
+            <h2 class="mb-3 ml-md-2">Detalhes sobre o empréstimo</h2>
+            <div class="d-md-flex mt-4">
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Paciente</p>
+                    <h6>{{ auxilio.paciente.nome }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Equipamento</p>
+                    <h6>{{ auxilio.equipamento.nome }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Etiqueta</p>
+                    <h6>{{ auxilio.equipamento.etiqueta }}</h6>
+                </div>
+            </div>
+            <div class="d-md-flex mb-4">
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Data de retirada</p>
+                    <h6>{{ auxilio.data_retirada|date:'d/m/Y' }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Horário de retirada</p>
+                    <h6>{{ auxilio.hora_retirada|date:'H:i' }}</h6>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-0">Quantidade</p>
+                    <h6 class="mb-3">{{ auxilio.quantidade }}</h6>
+                </div>
+            </div>
+
+            {% crispy form %}
+        </div>
+    </div>
+
+    {% include 'utilitarios/modal_cancelamento.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="{% static 'javascript/devolucao.js' %}"></script>
+{% endblock %}

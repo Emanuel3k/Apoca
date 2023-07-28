@@ -1,0 +1,236 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+
+    <head>
+
+        <meta charset="utf-8" />
+        {% block title %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'images/favicon_16x16.png' %}" />
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" id="bootstrap-style" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css' %}" rel="stylesheet" type="text/css" id="app-style"/>
+        <!-- Custom CSS -->
+        <link href="{% static 'css/logo.css' %}" rel="stylesheet" type="text/css" />
+        {% block css %}{% endblock css %}
+
+    </head>
+
+    <body data-sidebar="dark">
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            <header id="page-topbar">
+                <div class="navbar-header">
+                    <div class="d-flex">
+                        <div class="navbar-brand-box">
+                            <div class="logo">
+                                <img src="{% static 'images/logo.png' %}" id="sidebar-logo" alt="Logo APOCA" class="logo-sidebar">
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn btn-sm px-3 font-size-16 header-item waves-effect" id="vertical-menu-btn">
+                            <i class="fa fa-fw fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <div class="d-flex">
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {% if user.foto %}
+                                    <img class="rounded-circle header-profile-user" src="{{ user.foto.url }}" alt="Header Avatar">
+                                {% else %}
+                                    <img class="rounded-circle header-profile-user" src="{% static 'assets/images/users/user-img.png' %}" alt="Header Avatar">
+                                {% endif %}
+
+                                <span class="d-none d-xl-inline-block ml-1">{{ user.username }}</span>
+                                <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                {% if user.is_assistente_social %}
+                                    <a class="dropdown-item" href="{% url 'pacientes:administrativo' %}">
+                                        <i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Administrativo
+                                    </a>
+                                {% endif %}
+                                <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                                    <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Encerrar Sessão
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown d-inline-block">
+                            <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">
+                                <i class="bx bxs-tone"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="vertical-menu">
+                <div data-simplebar class="h-100">
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <!-- Left Menu Start -->
+                        <ul class="metismenu list-unstyled" id="side-menu">
+                            <li class="menu-title">Menu</li>
+
+                            <li>
+                                <a href="{% url 'pacientes:inicio' %}" class=" waves-effect">
+                                    <i class="bx bx-home"></i>
+                                    <span>Home</span>
+                                </a>
+                            </li>
+
+                            <li class="menu-title">Páginas</li>
+
+                            <li>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <i class="bx bx-user"></i>
+                                    <span>Paciente</span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <li><a href="{% url 'pacientes:pacientes' %}">Acessar Pacientes</a></li>
+                                    {% if user.is_assistente_social %}
+                                        <li><a href="{% url 'pacientes:cadastrar_paciente' %}">Cadastrar Novo</a></li>
+                                    {% endif %}
+                                </ul>
+                            </li>
+
+                            {% if user.is_assistente_social %}
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="fas fa-hand-holding-medical"></i>
+                                        <span>Auxílios</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{% url 'pacientes:listar_auxilios' %}">Auxílios Entregues</a></li>
+                                        <li><a href="{% url 'pacientes:listar_equipamentos_emprestados' %}">Registrar Devolução</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                        <i class="bx bx-clipboard"></i>
+                                        <span>Registros gerais</span>
+                                    </a>
+                                    <ul class="sub-menu" aria-expanded="false">
+                                        <li><a href="{% url 'pacientes:medicamentos' %}">Medicamentos</a></li>
+                                        <li><a href="{% url 'pacientes:equipamentos' %}">Equipamentos</a></li>
+                                        <li><a href="{% url 'pacientes:sup_alimentares' %}">Sup. Alimentares</a></li>
+                                        <li><a href="{% url 'pacientes:tipos_auxilios' %}">Tipos de Auxílios</a></li>
+                                        <li><a href="{% url 'pacientes:tipos_consulta' %}">Tipos de Consultas</a></li>
+                                        <li><a href="{% url 'pacientes:cidades' %}">Cidades</a></li>
+                                        <li><a href="{% url 'pacientes:doencas' %}">Doenças</a></li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a href="{% url 'pacientes:consultas' %}" class="waves-effect">
+                                        <i class="bx bx-plus-medical"></i>
+                                        <span>Consultas</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'pacientes:exames' %}" class="waves-effect">
+                                        <i class="bx bx-receipt"></i>
+                                        <span>Exames</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                </div>
+            </div>
+            <!-- Left Sidebar End -->
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+                <div class="page-content">
+                    <div class="container-fluid">
+                        {% block content %}{% endblock %}
+                    </div>
+                </div>
+
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-right d-none d-sm-block">
+                                    Este sistema foi desenvolvido por projeto de extensão do IFSC. <a href="{% url 'pacientes:equipe' %}">Equipe</a>.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title px-3 py-4">
+                    <a href="javascript:void(0);" class="right-bar-toggle float-right">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                    <h5 class="m-0">Opções de Visualização</h5>
+                </div>
+
+                <!-- Settings -->
+                <hr class="mt-0" />
+                <h6 class="text-center mb-0">Escolha de Tema</h6>
+
+                <div class="p-4">
+                    <div class="mb-2">
+                        <img src="{% static 'assets/images/layouts/layout-1.jpg' %}" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="light-mode-switch" checked />
+                        <label class="custom-control-label" for="light-mode-switch">Tema Claro</label>
+                    </div>
+
+                    <div class="mb-2">
+                        <img src="{% static 'assets/images/layouts/layout-2.jpg' %}" class="img-fluid img-thumbnail" alt="">
+                    </div>
+                    <div class="custom-control custom-switch mb-3">
+                        <input type="checkbox" class="custom-control-input theme-choice" id="dark-mode-switch" data-bsStyle="{% static 'assets/css/bootstrap-dark.min.css' %}" data-appStyle="{% static 'assets/css/app-dark.min.css' %}" />
+                        <label class="custom-control-label" for="dark-mode-switch">Tema Escuro</label>
+                    </div>
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <!-- TODO: verificar warnings de importação em 3 dos arquivos abaixo -->
+        <script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js' %}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js' %}"></script>
+        <script src="{% static 'assets/js/app.js' %}"></script>
+        <script src="{% static 'javascript/sidebar.js' %}"></script>
+
+        {% block js %}{% endblock js %}
+    </body>
+</html>

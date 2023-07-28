@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load l10n %}
+
+
+{% block title %}
+    <title>APOCA - Detalhes do Auxílio</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/owl.carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/owl.carousel/assets/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock css %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+    <div class="row">
+    <div class="col">
+            <!-- Card perfil -->
+            <div class="card overflow-hidden">
+
+                {% include 'utilitarios/cabecalho.html' with titulo='Detalhes auxílio' imagem="/static/images/SVG/auxilio_entregue.svg" %}
+
+                <div class="card-body">
+                    <div class="row">
+                       
+                        <div class="col-sm-12">
+                            <div class="pt-2 card-perfil">
+                                <h5 class="mb-0">Nome Paciente</h5>
+                                <p class="text-muted mb-2">{{ auxilio.paciente.nome }}</p><br>
+
+                                <div class="d-md-flex">
+                                    <div class="d-md-block mr-md-5">
+                                        <h5 class="mb-0">Tipo Auxílio</h5>
+                                        <p class="text-muted mb-2">{{ auxilio.tipo }}</p><br>
+                                    </div>
+                                    <div class="d-md-block">
+                                        <h5 class="mb-0">Quantidade</h5>
+                                        <p class="text-muted mb-2">{{ auxilio.quantidade }}</p><br>
+                                    </div>
+                                </div>
+
+                                <h5 class="mb-0">Data de Retirada</h5>
+                                <p class="text-muted mb-2">{{ auxilio.data_retirada|date:'d/m/Y' }}</p><br>
+
+                                <h5 class="mb-0">Hora da Retirada</h5>
+                                <p class="text-muted mb-2">{{ auxilio.hora_retirada }}</p><br>
+
+                                <h5 class="mb-0">Observação</h5>
+                                <p class="text-muted mb-2">{{ auxilio.observacao }}</p><br>
+
+                                {% if auxilio.medicamento %}
+                                    <h5 class="mb-0">Medicamento</h5>
+                                    <p class="text-muted mb-2">{{ auxilio.medicamento.nome }}</p><br>
+                                {% endif %}
+
+                                {% if auxilio.equipamento %}
+                                    <h5 class="mb-0">Equipamento</h5>
+                                    <p class="text-muted mb-2">{{ auxilio.equipamento.nome }}</p>
+                                    <h5 class="mb-0">Etiqueta</h5>
+                                    <p class="text-muted mb-2">{{ auxilio.equipamento.etiqueta }}</p><br>
+                                    {% if auxilio.data_devolucao %}
+                                    	<h5 class="mb-0">Data de Devolução</h5>
+                                		<p class="text-muted mb-2">{{ auxilio.data_devolucao }}</p><br>
+                                		<h5 class="mb-0">Hora da Devolução</h5>
+                                		<p class="text-muted mb-2">{{ auxilio.hora_devolucao }}</p><br>
+                                	{% endif %}
+                                {% endif %}
+                                <a href="{% url 'pacientes:listar_auxilios' %}" class="btn btn-primary">Voltar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+{% block js %}
+    <!-- owl.carousel js -->
+    <script src="{% static 'assets/libs/owl.carousel/owl.carousel.min.js' %}"></script>
+    <!-- timeline init js -->
+    <script src="{% static 'assets/js/pages/timeline.init.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'javascript/perfil_paciente.js' %}"></script>
+
+{% endblock js %}

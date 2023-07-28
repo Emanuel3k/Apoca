@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+{% endblock %}
+
+{% block title %}
+    <title>APOCA - Edilção de Consulta</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden">
+        {% include 'utilitarios/cabecalho.html' with titulo='Cadastro de consulta' imagem="/static/images/SVG/consulta.svg" %}
+
+        <div class="card-body">
+            {% crispy form %}
+        </div>
+    </div>
+
+    {% include 'utilitarios/modal_cancelamento.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
+    <script>
+        flatpickr("#id_data", {
+            dateFormat: "d/m/Y",
+            locale: "pt",
+            defaultDate: "today"
+        });
+    </script>
+{% endblock %}

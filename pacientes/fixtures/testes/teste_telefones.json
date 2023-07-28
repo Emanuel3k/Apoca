@@ -1,0 +1,272 @@
+[
+  {
+    "model": "pacientes.telefone",
+    "pk": 1,
+    "fields": {
+      "paciente": 2,
+      "ddd": "47",
+      "telefone": "996156906"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 2,
+    "fields": {
+      "paciente": 1,
+      "ddd": "65",
+      "telefone": "987635245"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 3,
+    "fields": {
+      "paciente": 7,
+      "ddd": "31",
+      "telefone": "998372646"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 4,
+    "fields": {
+      "paciente": 10,
+      "ddd": "41",
+      "telefone": "999827364"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 5,
+    "fields": {
+      "paciente": 8,
+      "ddd": "84",
+      "telefone": "887293834"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 6,
+    "fields": {
+      "paciente": 4,
+      "ddd": "47",
+      "telefone": "982647280"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 7,
+    "fields": {
+      "paciente": 6,
+      "ddd": "48",
+      "telefone": "36222629"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 8,
+    "fields": {
+      "paciente": 5,
+      "ddd": "95",
+      "telefone": "36234918"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 9,
+    "fields": {
+      "paciente": 3,
+      "ddd": "63",
+      "telefone": "990283726"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 10,
+    "fields": {
+      "paciente": 8,
+      "ddd": "21",
+      "telefone": "96156906"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 11,
+    "fields": {
+      "paciente": 10,
+      "ddd": "27",
+      "telefone": "87326399"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 12,
+    "fields": {
+      "paciente": 9,
+      "ddd": "68",
+      "telefone": "36279983"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 13,
+    "fields": {
+      "paciente": 5,
+      "ddd": "61",
+      "telefone": "99827361"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 14,
+    "fields": {
+      "paciente": 8,
+      "ddd": "84",
+      "telefone": "98271639"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 15,
+    "fields": {
+      "paciente": 1,
+      "ddd": "31",
+      "telefone": "998172618"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 16,
+    "fields": {
+      "paciente": 2,
+      "ddd": "47",
+      "telefone": "887615263"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 17,
+    "fields": {
+      "paciente": 6,
+      "ddd": "42",
+      "telefone": "829103986"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 18,
+    "fields": {
+      "paciente": 4,
+      "ddd": "47",
+      "telefone": "983716180"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 19,
+    "fields": {
+      "paciente": 7,
+      "ddd": "41",
+      "telefone": "999827908"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 20,
+    "fields": {
+      "paciente": 3,
+      "ddd": "49",
+      "telefone": "989716283"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 21,
+    "fields": {
+      "paciente": 10,
+      "ddd": "47",
+      "telefone": "982901937"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 22,
+    "fields": {
+      "paciente": 9,
+      "ddd": "49",
+      "telefone": "872637189"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 23,
+    "fields": {
+      "paciente": 2,
+      "ddd": "54",
+      "telefone": "903281273"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 24,
+    "fields": {
+      "paciente": 6,
+      "ddd": "47",
+      "telefone": "99838902"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 25,
+    "fields": {
+      "paciente": 3,
+      "ddd": "47",
+      "telefone": "892837820"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 26,
+    "fields": {
+      "paciente": 8,
+      "ddd": "47",
+      "telefone": "99438851"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 27,
+    "fields": {
+      "paciente": 4,
+      "ddd": "55",
+      "telefone": "909028279"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 28,
+    "fields": {
+      "paciente": 6,
+      "ddd": "48",
+      "telefone": "986156906"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 29,
+    "fields": {
+      "paciente": 9,
+      "ddd": "92",
+      "telefone": "989762718"
+    }
+  },
+  {
+    "model": "pacientes.telefone",
+    "pk": 30,
+    "fields": {
+      "paciente": 1,
+      "ddd": "47",
+      "telefone": "999999999"
+    }
+  }
+]

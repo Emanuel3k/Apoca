@@ -1,0 +1,62 @@
+#tabela-paciente {
+    max-height: 400px;
+}
+
+#foto-cadastro {
+    width: 200px;
+    height: 200px;
+    border-radius: 400px;
+    object-fit: cover;
+}
+
+.avatar-xs,
+.avatar-md {
+    object-fit: cover !important;
+}
+
+.input-foto {
+    width: 20px;
+	height: 20px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+    z-index: -1;
+}
+
+.input-foto + label {
+    font-size: .8125rem;
+    font-weight: 400;
+    color:#fff;
+    background-color: #556ee6;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: .47rem .75rem;
+    margin-bottom: 0;
+    transition: 0.2s;
+}
+
+.input-foto:focus + label,
+.input-foto + label:hover {
+    background-color: #3452e1;
+}
+
+/* Linha do tempo */
+.hori-timeline .events .event-list:hover .down-arrow-icon {
+    -webkit-animation: none;
+    animation: none;
+}
+
+.hori-timeline .events .event-list.active .down-arrow-icon {
+    -webkit-animation: none;
+    animation: none;
+}
+
+.event-down-icon i {
+    cursor: pointer;
+}
+
+@media (max-width:767px) {
+    .texto-cabecalho {
+        font-size: 18px;
+    }
+}

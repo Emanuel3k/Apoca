@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Cadastro de Equipamento</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+    
+    <div class="card card-body">
+        <h2>Cadastro de equipamento</h2>
+        {% crispy form %}
+    </div>
+
+    {% include 'utilitarios/modal_cancelamento.html' %}
+
+{% endblock %}

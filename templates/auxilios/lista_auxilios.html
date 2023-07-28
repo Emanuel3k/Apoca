@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Auxílios entregues</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Auxílios entregues" imagem="/static/images/SVG/auxilio_entregue.svg" %}
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-auxilio">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Data</th>
+                            <th scope="col">Hora</th>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Auxílio</th>
+                            <th scope="col">Qtde</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for auxilio in lista_auxilios %}
+                        <tr>
+                            <td>{{ auxilio.data_retirada|date:'d/m/Y' }}</td>
+                            <td>{{ auxilio.hora_retirada }}</td>
+                            <td>{{ auxilio.paciente.nome }}</td>
+                            <td>{{ auxilio.tipo.nome }}</td>
+                            <td>{{ auxilio.quantidade }}</td>
+                            <td>
+                                <ul class="list-inline font-size-20 contact-links mb-0">
+                                    <li class="list-inline-item px-2">
+                                        <a href="{% url 'pacientes:editar_auxilio' pk=auxilio.pk %}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bx bx-edit"></i></a>
+                                    </li>
+                                    <li class="list-inline-item px-2">
+                                        <a href="{% url 'pacientes:detalhes_auxilio' pk=auxilio.pk %}" data-toggle="tooltip" data-placement="top" title="Detalhes"><i class="bx bx-receipt"></i></a>
+                                    </li>
+                                    <li class="list-inline-item px-2">
+                                        <a
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Excluir"
+                                            onclick="abrirModal({{ auxilio.pk }})"
+                                        >
+                                            <i class="bx bx-trash"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para a deleção -->
+    {% include 'utilitarios/modal_delecao.html' %}
+{% endblock %}
+
+{% block js %}
+    {% include 'utilitarios/configuracao_data_table.html' with tipo="auxilio" %}
+
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+
+
+{% endblock %}

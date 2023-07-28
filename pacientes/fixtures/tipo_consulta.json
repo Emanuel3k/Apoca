@@ -1,0 +1,30 @@
+[
+    {
+        "model": "pacientes.tipoconsulta",
+        "pk": 1,
+        "fields": {
+            "nome": "Médica"
+        }
+    },
+    {
+        "model": "pacientes.tipoconsulta",
+        "pk": 2,
+        "fields": {
+            "nome": "Psicológica"
+        }
+    },
+    {
+        "model": "pacientes.tipoconsulta",
+        "pk": 3,
+        "fields": {
+            "nome": "Social"
+        }
+    },
+    {
+        "model": "pacientes.tipoconsulta",
+        "pk": 4,
+        "fields": {
+            "nome": "Financeira"
+        }
+    }
+]

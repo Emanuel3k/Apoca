@@ -1,0 +1,345 @@
+[
+  {
+    "model": "pacientes.cidade",
+    "pk": 1,
+    "fields": {
+      "nome": "Canoinhas"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 2,
+    "fields": {
+      "nome": "Três Barras"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 3,
+    "fields": {
+      "nome": "Curitiba"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 4,
+    "fields": {
+      "nome": "Joinville"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 5,
+    "fields": {
+      "nome": "Chapecó"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 6,
+    "fields": {
+      "nome": "Blumenau"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 7,
+    "fields": {
+      "nome": "Itajaí"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 8,
+    "fields": {
+      "nome": "São José"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 9,
+    "fields": {
+      "nome": "São Paulo"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 10,
+    "fields": {
+      "nome": "Rio de Janeiro"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 11,
+    "fields": {
+      "nome": "Jaragua do Sul"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 12,
+    "fields": {
+      "nome": "Concordia"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 13,
+    "fields": {
+      "nome": "Palhoça"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 14,
+    "fields": {
+      "nome": "Borrazópolis"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 15,
+    "fields": {
+      "nome": "Xique-Xique"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 16,
+    "fields": {
+      "nome": "Palma Sola"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 17,
+    "fields": {
+      "nome": "Sem-Peixe"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 18,
+    "fields": {
+      "nome": "Putinga"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 19,
+    "fields": {
+      "nome": "Chapadão do Céu"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 20,
+    "fields": {
+      "nome": "Belo Horizonte"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 21,
+    "fields": {
+      "nome": "Brasília"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 22,
+    "fields": {
+      "nome": "Porto Alegre"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 23,
+    "fields": {
+      "nome": "Manaus"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 24,
+    "fields": {
+      "nome": "Santos"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 25,
+    "fields": {
+      "nome": "Niterói"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 26,
+    "fields": {
+      "nome": "Belém"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 27,
+    "fields": {
+      "nome": "Goiânia"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 28,
+    "fields": {
+      "nome": "Uberlândia"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 29,
+    "fields": {
+      "nome": "Palmas"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 30,
+    "fields": {
+      "nome": "Londrina"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 31,
+    "fields": {
+      "nome": "João Pessoa"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 32,
+    "fields": {
+      "nome": "Juiz de Fora"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 33,
+    "fields": {
+      "nome": "Araraquara"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 34,
+    "fields": {
+      "nome": "São Gonçalo"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 35,
+    "fields": {
+      "nome": "Duque de Caxias"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 36,
+    "fields": {
+      "nome": "Suzano"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 37,
+    "fields": {
+      "nome": "Nova Iguaçu"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 38,
+    "fields": {
+      "nome": "Bauru"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 39,
+    "fields": {
+      "nome": "Petrolina"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 40,
+    "fields": {
+      "nome": "Limeira"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 41,
+    "fields": {
+      "nome": "Balneário Camboriú"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 42,
+    "fields": {
+      "nome": "Itapema"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 43,
+    "fields": {
+      "nome": "Presidente Castelo Branco"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 44,
+    "fields": {
+      "nome": "Xanxerê"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 45,
+    "fields": {
+      "nome": "Laguna"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 46,
+    "fields": {
+      "nome": "Porto União"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 47,
+    "fields": {
+      "nome": "Mafra"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 48,
+    "fields": {
+      "nome": "Monte Castelo"
+    }
+  },
+  {
+    "model": "pacientes.cidade",
+    "pk": 49,
+    "fields": {
+      "nome": "Major Vieira"
+    }
+  }
+]

@@ -1,0 +1,17 @@
+{% load static %}
+
+<div class="bg-soft-primary mb-3">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="text-primary text-md-left text-center p-3">
+                <h1 class="text-primary texto-cabecalho mb-0">{{ titulo }}</h1>
+                {% if paciente %}
+                    <h4 class="mt-2 mb-0">Paciente: {{ paciente.nome }}</h4>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-5 align-self-end d-md-block d-none mt-3">
+            <img src="{{imagem}}" alt="Imagem Cabeçalho" class="float-right mr-2 {{classes}}" height="200px;">
+        </div>
+    </div>
+</div>

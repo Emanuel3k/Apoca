@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block title %}
+    <title>APOCA - Edição de Paciente</title>
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" value="{% url 'pacientes:remover_foto' pk=paciente.pk %}" id="url_remover_foto" />
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Edição de paciente" imagem="/static/images/SVG/editar_perfil.svg" %}
+
+        {% include 'utilitarios/mensagens.html' %}
+
+        <div class="card-body">
+            <!-- Foto do paciente -->
+            <div class="row justify-content-center mt-4 mb-3">
+                {% if paciente.foto %}
+                    <img id="foto-cadastro" src="{{ paciente.foto.url }}" class="d-block" alt="Foto paciente" />
+                {% else %}
+                    <img id="foto-cadastro" src="{% static 'assets/images/users/user-img.png' %}" class="d-block" alt="Foto paciente" />
+                {% endif %}
+            </div>
+
+            {% crispy form %}
+
+            {% include 'utilitarios/modal_cancelamento.html' %}
+            {% include 'utilitarios/modal_confirmacao.html' %}
+        </div>
+    </div>
+
+{% endblock %}
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+    <script src="{% static 'javascript/formatar_cpf.js' %}"></script>
+    <script src="{% static 'javascript/formatar_cep.js' %}"></script>
+    <script src="{% static 'javascript/formatar_renda.js' %}"></script>
+    <script src="{% static 'javascript/toggle_metastase.js' %}"></script>
+    <script src="{% static 'javascript/edicao_paciente.js' %}"></script>
+{% endblock %}

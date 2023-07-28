@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Equipamentos emprestados</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden">
+        {% include 'utilitarios/cabecalho.html' with titulo="Equipamentos emprestados" imagem="/static/images/SVG/devolucao_equipamento.svg" classes="my-2" %}
+
+        <div class="card card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-emprestimo">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Data empréstimo</th>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Etiqueta</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Quantidade</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for auxilio in equipamentos_emprestados %}
+                        <tr>
+                            <td>{{ auxilio.data_retirada|date:'d/m/Y' }}</td>
+                            <td>{{ auxilio.paciente.nome }}</td>
+                            <td>{{ auxilio.equipamento.etiqueta }}</td>
+                            <td>{{ auxilio.equipamento.nome }}</td>
+                            <td>{{ auxilio.quantidade}}</td>
+                            <td>
+                                <ul class="list-inline font-size-20 contact-links mb-0">
+                                    <li class="list-inline-item px-2">
+                                        <a href="{% url 'pacientes:registrar_devolucao' pk=auxilio.pk %}" data-toggle="tooltip" data-placement="top" title="Registrar devolução"><i class="bx bx-check-circle"></i></a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para a deleção -->
+    {% include 'utilitarios/modal_delecao.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+    {% include 'utilitarios/configuracao_data_table.html' with tipo="emprestimo" %}
+
+{% endblock %}

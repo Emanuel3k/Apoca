@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Edição de Tipo de Auxílio</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+    
+    <div class="card card-body">
+        <h2 class="mb-3">Edição de tipo de auxílio</h2>
+        {% crispy form %}
+    </div>
+
+    {% include 'utilitarios/modal_cancelamento.html' %}
+{% endblock %}

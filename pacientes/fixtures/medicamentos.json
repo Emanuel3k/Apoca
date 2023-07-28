@@ -1,0 +1,72 @@
+[
+  {
+    "model": "pacientes.medicamento",
+    "pk": 1,
+    "fields": {
+      "nome": "Dexametasona EMS; C/10 CPR 4MG GEN"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 2,
+    "fields": {
+      "nome": "Levotiroxina Merck; C/30 CPR 125 MCG GEN"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 3,
+    "fields": {
+      "nome": "Levotiroxina Merck; C/30 CPR 200 MCG GEN"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 4,
+    "fields": {
+      "nome": "Loperamida Globo; C/12 CPR 2MG GEN"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 5,
+    "fields": {
+      "nome": "Neutrogena Sun Fresh Prot Solar: 50 ML FPS30 F"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 6,
+    "fields": {
+      "nome": "Noripurum Folico; C/20 CPR HAST 100+0,35mg"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 7,
+    "fields": {
+      "nome": "Pantopaz; C/28 CPR REV LR 40MG"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 8,
+    "fields": {
+      "nome": "Prot Sol Loreal Expertise: FPS60; 50GR Facial"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 9,
+    "fields": {
+      "nome": "Tylenol; C/4 CPR REV 750MG"
+    }
+  },
+  {
+    "model": "pacientes.medicamento",
+    "pk": 10,
+    "fields": {
+      "nome": "Vonau Flash; C/30 CPR ORODISP 8MG"
+    }
+  }
+]

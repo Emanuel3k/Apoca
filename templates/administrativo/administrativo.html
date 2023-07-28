@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>APOCA - Administrativo</title>
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+    <h1 class="mb-5">Bem-vindo(a) à área administrativa</h1>
+
+
+    <h4>Backup de dados</h4>
+    <p class="text-muted">Para fazer o <i>backup</i> de dados e mantê-los seguros, clique no botão abaixo.</p>
+    <a class="btn btn-lg btn-primary" href="{% url 'pacientes:backup' %}">Fazer <i>backup</i></a>
+    <a class="btn btn-lg btn-secondary ml-4" href="https://drive.google.com/drive/u/3/folders/1Fd1xTGtZAN4PwUgzLxjYeJmrKJmjc2nd" target="_blank">Acessar <i>backups</i></a>
+
+{% endblock %}

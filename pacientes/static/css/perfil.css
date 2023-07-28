@@ -1,0 +1,9 @@
+@media (min-width: 1080px) {
+    .card-perfil h6 {
+        font-size: 12px;
+    }
+
+    p{
+        font-size: 12px;
+    }
+}

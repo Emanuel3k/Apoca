@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>APOCA - Exames</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Exames" imagem="/static/images/SVG/exame.svg" classes='my-2' %}
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-exame">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Paciente</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for exame in exames %}
+                        <tr>
+                            <td>{{ exame.tipo }}</td>
+                            <td>{{ exame.data|date:'d/m/Y' }}</td>
+                            <td>{{ exame.paciente.nome }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% block js %}
+        <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+        {% include 'utilitarios/configuracao_data_table.html' with tipo="exame" %}
+    {% endblock %}
+{% endblock %}

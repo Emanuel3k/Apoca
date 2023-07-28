@@ -1,0 +1,142 @@
+[
+    {
+      "model": "pacientes.cidade",
+      "pk": 1,
+      "fields": {
+        "nome": "=-439"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 2,
+      "fields": {
+        "nome": 123.456
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 3,
+      "fields": {
+        "nome": 26072000
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 4,
+      "fields": {
+        "nome": "#)(_=];"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 5,
+      "fields": {
+        "nome": "⥨ ⨂ ⨃ ⨄ ⨅ ⨆ ⨇ ⨈ ⨉"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 6,
+      "fields": {
+        "nome": 1999
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 7,
+      "fields": {
+        "nome": "brooklyn 1986"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 8,
+      "fields": {
+        "nome": "Vote 12344321"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 9,
+      "fields": {
+        "nome": "123 teste"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 10,
+      "fields": {
+        "nome": "???????????"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 11,
+      "fields": {
+        "nome": "Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ "
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 12,
+      "fields": {
+        "nome": "⑁ ⑂ ⑃ ⑄ "
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 13,
+      "fields": {
+        "nome": " Ψ Ω έ ί ΰ β γ"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 14,
+      "fields": {
+        "nome": "♠ ♡ ♢ ♣ ♤ ♥ ♦ ♧"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 15,
+      "fields": {
+        "nome": ")9*7¨6%4#32"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 16,
+      "fields": {
+        "nome": "Canoinhas 2020"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 17,
+      "fields": {
+        "nome": 190
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 18,
+      "fields": {
+        "nome": "F1 F2 F3 F4 F5"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 19,
+      "fields": {
+        "nome": "Alt+F12"
+      }
+    },
+    {
+      "model": "pacientes.cidade",
+      "pk": 20,
+      "fields": {
+        "nome": " '123'  "
+      }
+    }
+]

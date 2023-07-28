@@ -1,0 +1,6 @@
+Django
+mysqlclient
+Pillow
+django-crispy-forms
+python-dateutil
+pydrive

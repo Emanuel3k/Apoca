@@ -1,0 +1,272 @@
+[
+  {
+    "model": "pacientes.equipamento",
+    "pk": 1,
+    "fields": {
+      "etiqueta": "ABC 123",
+      "nome": "Cinto",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 2,
+    "fields": {
+      "etiqueta": "9999999",
+      "nome": "Bolsa",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 3,
+    "fields": {
+      "etiqueta": "ABC 123",
+      "nome": "Mochila",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 4,
+    "fields": {
+      "etiqueta": "9999999",
+      "nome": "Bengala",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 5,
+    "fields": {
+      "etiqueta": "MLS 2448",
+      "nome": "Andador",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 6,
+    "fields": {
+      "etiqueta": "XML 123456",
+      "nome": "Andador",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 7,
+    "fields": {
+      "etiqueta": "PCC 3415",
+      "nome": "Oculos",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 8,
+    "fields": {
+      "etiqueta": "xyz abc",
+      "nome": "Camisa termica",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 9,
+    "fields": {
+      "etiqueta": "2345 9876",
+      "nome": "Carro Adaptado",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 10,
+    "fields": {
+      "etiqueta": "TOAD 421",
+      "nome": "Sapato",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 11,
+    "fields": {
+      "etiqueta": "T23GU87A",
+      "nome": "Cadeira de rodas",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 12,
+    "fields": {
+      "etiqueta": "12093 ABCDEF",
+      "nome": "Cadeira mecanica",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 13,
+    "fields": {
+      "etiqueta": "09873",
+      "nome": "Muleta",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 14,
+    "fields": {
+      "etiqueta": "CBC 500",
+      "nome": "Seringas",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 15,
+    "fields": {
+      "etiqueta": "YUAIOKAREHBAGE",
+      "nome": "Jaleco",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 16,
+    "fields": {
+      "etiqueta": "48275019",
+      "nome": "Chapéu",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 17,
+    "fields": {
+      "etiqueta": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      "nome": "Mala",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 18,
+    "fields": {
+      "etiqueta": "zxywvutsrqponmlkjuhgfedcba",
+      "nome": "Maleta",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 19,
+    "fields": {
+      "etiqueta": "892 TGJ 265",
+      "nome": "Sacola térmica",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 20,
+    "fields": {
+      "etiqueta": "ABC 482 DEF",
+      "nome": "Canetas",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 21,
+    "fields": {
+      "etiqueta": "098 lço 235",
+      "nome": "Computador",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 22,
+    "fields": {
+      "etiqueta": "oia 367 plk",
+      "nome": "Televisao",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 23,
+    "fields": {
+      "etiqueta": "LKJ-729-STX",
+      "nome": "Geladeira",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 24,
+    "fields": {
+      "etiqueta": "382-QIA-983",
+      "nome": "Ar condicionado",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 25,
+    "fields": {
+      "etiqueta": "bjc-371-hji",
+      "nome": "Papel",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 26,
+    "fields": {
+      "etiqueta": "120-rwe-780",
+      "nome": "Brinquedos",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 27,
+    "fields": {
+      "etiqueta": "AOUN-1234-AOSN",
+      "nome": "Fogão",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 28,
+    "fields": {
+      "etiqueta": "98706-7865",
+      "nome": "Aparelho Auditivo",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 29,
+    "fields": {
+      "etiqueta": "832-EEH",
+      "nome": "Capacete",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 30,
+    "fields": {
+      "etiqueta": "qwhj-26378",
+      "nome": "Bandagem",
+      "emprestado": false
+    }
+  }
+]

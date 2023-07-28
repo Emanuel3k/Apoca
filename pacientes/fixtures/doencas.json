@@ -1,0 +1,576 @@
+[
+    {
+      "model": "pacientes.doenca",
+      "pk": 1,
+      "fields": {
+        "nome": "Asma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 2,
+      "fields": {
+        "nome": "Câncer Anal"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 3,
+      "fields": {
+        "nome": "Câncer Colarretal"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 4,
+      "fields": {
+        "nome": "Câncer de Bexiga"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 5,
+      "fields": {
+        "nome": "Câncer de Boca e Orofaringe"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 6,
+      "fields": {
+        "nome": "Câncer de Cavidade Nasal e Seios Panasais"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 7,
+      "fields": {
+        "nome": "Câncer de Endométrio"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 8,
+      "fields": {
+        "nome": "Câncer de Esofago"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 9,
+      "fields": {
+        "nome": "Câncer de Estomago"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 10,
+      "fields": {
+        "nome": "Câncer de Fígado"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 11,
+      "fields": {
+        "nome": "Câncer de Garganta"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 12,
+      "fields": {
+        "nome": "Câncer de Intestiino Delgado Infantil"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 13,
+      "fields": {
+        "nome": "Câncer de Laringe e Hipofaringe"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 14,
+      "fields": {
+        "nome": "Câncer de Mama"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 15,
+      "fields": {
+        "nome": "Câncer de Mama Avançado"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 16,
+      "fields": {
+        "nome": "Câncer de Mama em Homens"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 17,
+      "fields": {
+        "nome": "Câncer de Nasofaringe"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 18,
+      "fields": {
+        "nome": "Câncer de Olho"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 19,
+      "fields": {
+        "nome": "Câncer de Ovário"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 20,
+      "fields": {
+        "nome": "Câncer de Pâncreas"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 21,
+      "fields": {
+        "nome": "Câncer de Pele Basocelular e Espinocelular"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 22,
+      "fields": {
+        "nome": "Câncer de Pele de Células de Markel"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 23,
+      "fields": {
+        "nome": "Câncer de Pele Melanoma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 24,
+      "fields": {
+        "nome": "Câncer de Pulmão Não Pequenas Células"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 25,
+      "fields": {
+        "nome": "Câncer de Pulmão Pequenas Células"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 26,
+      "fields": {
+        "nome": "Câncer de Rim"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 27,
+      "fields": {
+        "nome": "Câncer de Testículo"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 28,
+      "fields": {
+        "nome": "Câncer de Tireoide"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 29,
+      "fields": {
+        "nome": "Câncer de Vagina"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 30,
+      "fields": {
+        "nome": "Câncer de Vesícula "
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 31,
+      "fields": {
+        "nome": "Câncer de Via Biliar"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 32,
+      "fields": {
+        "nome": "Câncer de Vulva"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 33,
+      "fields": {
+        "nome": "Câncer do Colo de Útero"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 34,
+      "fields": {
+        "nome": "Câncer Gástrico"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 35,
+      "fields": {
+        "nome": "Câncer Glândula Suprarrenal"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 36,
+      "fields": {
+        "nome": "Câncer na Cabeça e Pescoço"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 37,
+      "fields": {
+        "nome": "Câncer Pênis"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 38,
+      "fields": {
+        "nome": "Câncer Próstata"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 39,
+      "fields": {
+        "nome": "Câncer Salivares"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 40,
+      "fields": {
+        "nome": "Diabetes"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 41,
+      "fields": {
+        "nome": "Doença de Castleman"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 42,
+      "fields": {
+        "nome": "Doença Tropoblástica Gesticional"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 43,
+      "fields": {
+        "nome": "GIST"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 44,
+      "fields": {
+        "nome": "Hipertensão"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 45,
+      "fields": {
+        "nome": "Hipertireodismo"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 46,
+      "fields": {
+        "nome": "Hipotireodismo"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 47,
+      "fields": {
+        "nome": "Labirintite"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 48,
+      "fields": {
+        "nome": "Leucemia em Crianças"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 49,
+      "fields": {
+        "nome": "Leucemia Linfóide Aguda (LLA)"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 50,
+      "fields": {
+        "nome": "Leucemia Linfóide Crônica (LLC)"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 51,
+      "fields": {
+        "nome": "Leucemia Mieloide Aguda (LMA)"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 52,
+      "fields": {
+        "nome": "Leucemia Mieloide Crônica (LMC)"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 53,
+      "fields": {
+        "nome": "Leucemia Mielomonocítica Crônica"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 54,
+      "fields": {
+        "nome": "Limfoma de Hodgkin"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 55,
+      "fields": {
+        "nome": "Limfoma de Pele"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 56,
+      "fields": {
+        "nome": "Limfoma Não Hodgkin"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 57,
+      "fields": {
+        "nome": "Linfoma Não Hodgkin em Crianças"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 58,
+      "fields": {
+        "nome": "Macroglobulinemia de Waldenström"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 59,
+      "fields": {
+        "nome": "Meiloma Múltiplo"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 60,
+      "fields": {
+        "nome": "Mesotelioma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 61,
+      "fields": {
+        "nome": "Neuroblastoma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 62,
+      "fields": {
+        "nome": "Neuroendócrinos"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 63,
+      "fields": {
+        "nome": "Osteosarcoma "
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 64,
+      "fields": {
+        "nome": "Rabdomiossarcoma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 65,
+      "fields": {
+        "nome": "Retinoblastoma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 66,
+      "fields": {
+        "nome": "Sarcoma de Kaposi"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 67,
+      "fields": {
+        "nome": "Sarcoma de Partes Moles"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 68,
+      "fields": {
+        "nome": "Sarcoma Uterino"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 69,
+      "fields": {
+        "nome": "Síndrome Mielodisplásica"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 70,
+      "fields": {
+        "nome": "Sítio Primário Desconhecido"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 71,
+      "fields": {
+        "nome": "Timoma"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 72,
+      "fields": {
+        "nome": "Trombose"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 73,
+      "fields": {
+        "nome": "Tumor Carcinoide de Pulmão"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 74,
+      "fields": {
+        "nome": "Tumor Carcinoide Gastrointestinal"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 75,
+      "fields": {
+        "nome": "Tumor Ewing"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 76,
+      "fields": {
+        "nome": "Tumor Gastro Intestinal"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 77,
+      "fields": {
+        "nome": "Tumor Wilms"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 78,
+      "fields": {
+        "nome": "Tumores Cerebrais/SNC"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 79,
+      "fields": {
+        "nome": "Tumores Cerebrais/SNC em crinaças"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 80,
+      "fields": {
+        "nome": "Tumores Neuroendócrinos"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 81,
+      "fields": {
+        "nome": "Tumores Ósseos"
+      }
+    },
+    {
+      "model": "pacientes.doenca",
+      "pk": 82,
+      "fields": {
+        "nome": "Tumores Pituitários"
+      }
+    }
+]

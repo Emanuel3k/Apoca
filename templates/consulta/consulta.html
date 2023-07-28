@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <title>APOCA - Consultas</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Consultas" imagem="/static/images/SVG/consulta.svg" %}
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-consulta">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Observação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for consulta in consultas %}
+                        <tr>
+                            <td>{{ consulta.tipo }}</td>
+                            <td>{{ consulta.data|date:'d/m/Y' }}</td>
+                            <td>{{ consulta.paciente.nome }}</td>
+                            <td>{{ consulta.observacao }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    {% block js %}
+        <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+        <script>
+            $(document).ready(function(){
+                    $('#tabela-consulta').DataTable(
+                        {
+                            language: {
+                                search: "Pesquisa:",
+                                searchPlaceholder: "Procure por uma consulta",
+                                info: "Mostrando _START_ até _END_ de _TOTAL_ registros",
+                                infoEmpty: "Mostrando 0 até 0 de 0 registros",
+                                infoFiltered: "(filtrado do total de _MAX_ registros)",
+                                emptyTable: "Nenhuma consulta registrada",
+                                zeroRecords: "Nenhum resultado encontrado",
+                                processing: "Processando...",
+                                loadingRecords: "Carregando...",
+                                lengthMenu: "Mostrar _MENU_ registros",
+                                paginate: {
+                                    first: "Primeiro",
+                                    last: "Último",
+                                    next: "<i class=\"mdi mdi-chevron-right\">",
+                                    previous: "<i class=\"mdi mdi-chevron-left\">"
+                                }
+                            }
+                        }
+                    );
+        
+                    // Retirando classes do limitador e do filtro
+                    $('#tabela-consulta_length').children().children().removeClass('custom-select-sm');
+                    $('#tabela-consulta_length').children().children().removeClass('form-control-sm');
+                    $('#tabela-consulta_filter').children().children().removeClass('form-control-sm');
+                });
+        </script>
+    {% endblock %}
+{% endblock %}

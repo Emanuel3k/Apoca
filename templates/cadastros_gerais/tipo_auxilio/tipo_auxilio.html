@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>APOCA - Tipo de Auxílio</title>
+{% endblock %}
+
+{% block css %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    {% include 'utilitarios/mensagens.html' %}
+
+    <div class="card overflow-hidden mb-4">
+        {% include 'utilitarios/cabecalho.html' with titulo="Tipos de auxílios" imagem="/static/images/SVG/tipos_auxilios.svg" %}
+
+        <div class="card-body">
+            <div class="d-flex justify-content-center mb-4">
+                <div class="ml-md-auto">
+                    <a href="{% url 'pacientes:cadastrar_tipo_auxilio' %}" class="btn btn-primary">Cadastrar tipo de auxílio</a>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-centered table-nowrap table-hover" id="tabela-tipo">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Abreviação</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTable">
+                        {% for tipo_auxilio in tipos_auxilios %}
+                        <tr>
+                            <td>{{ tipo_auxilio.nome }}</td>
+                            <td>{{ tipo_auxilio.abreviacao }}</td>
+                            <td>
+                                <ul class="list-inline font-size-20 contact-links mb-0">
+                                    <li class="list-inline-item px-2">
+                                        <a href="{% url 'pacientes:editar_tipo_auxilio' pk=tipo_auxilio.pk %}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bx bx-edit"></i></a>
+                                    </li>
+                                    <li class="list-inline-item px-2">
+                                        <a
+                                            data-toggle="tooltip"
+                                            data-placement="top"
+                                            title="Excluír"
+                                            onclick="abrirModal({{ tipo_auxilio.pk }})"
+                                        >
+                                            <i class="bx bx-trash"></i>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Modal para a deleção -->
+    {% include 'utilitarios/modal_delecao.html' %}
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+    {% include 'utilitarios/configuracao_data_table.html' with tipo="tipo" %}
+{% endblock %}

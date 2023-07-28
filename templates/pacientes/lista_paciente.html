@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/chart.js/Chart.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>APOCA - Pacientes</title>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            {% include 'utilitarios/mensagens.html' %}
+            <div class="card overflow-hidden mb-4">
+                {% include 'utilitarios/cabecalho.html' with titulo="Pacientes" imagem="/static/images/SVG/pacientes.svg" %}
+        
+                <div class="card-body">
+                    {% if user.is_assistente_social %}
+                        <div class="d-flex justify-content-center mb-4">
+                            <div class="ml-md-auto">
+                                <a href="{% url 'pacientes:cadastrar_paciente' %}" class="btn btn-primary">Cadastrar Novo Paciente</a>
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="table-responsive">
+                        <table class="table table-centered table-nowrap table-hover" id="tabela-pacientes">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col" style="width: 70px;">#</th>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Data de Nascimento</th>
+                                    <th scope="col">Auxílios</th>
+                                    <th scope="col">CPF</th>
+                                    <th scope="col">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTable">
+                                {% for paciente in pacientes %}
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                {% if paciente.foto %}
+                                                    <a href="{% url 'pacientes:perfil_paciente' pk=paciente.pk %}">
+                                                        <img class="rounded-circle avatar-xs" src="{{ paciente.foto.url }}" alt="Imagem usuário">
+                                                    </a>
+                                                {% else %}
+                                                    <a href="{% url 'pacientes:perfil_paciente' pk=paciente.pk %}">
+                                                        <img class="rounded-circle avatar-xs" src="{% static 'assets/images/users/user-img.png' %}" alt="Imagem usuário">
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'pacientes:perfil_paciente' pk=paciente.pk %}">{{ paciente.nome }}</a>
+                                        </td>
+                                        <td data-sort="{{ paciente.data_nascimento|date:'Y-m-d' }}">{{ paciente.data_nascimento|date:'d/m/Y' }}</td>
+                                        <td>
+                                            <div>
+                                                {% if paciente.tipo_auxilio_aprovado.all.count > 3 %}
+                                                    {% for auxilio in paciente.tipo_auxilio_aprovado.all %}
+                                                        {% if forloop.counter <= 3 %}
+                                                            <a
+                                                                href="#" class="badge badge-soft-primary font-size-11 m-1"
+                                                                data-toggle="tooltip" data-placement="top" title="{{ auxilio.nome }}"
+                                                            >
+                                                                {{ auxilio.abreviacao }}
+                                                            </a>
+                                                        {% endif %}
+                                                    {% endfor %}
+
+                                                    <a href="#" class="badge badge-soft-primary font-size-11 m-1">
+                                                        + {{ paciente.qtd_auxilio }}
+                                                    </a>
+                                                {% else %}
+                                                    {% for auxilio in paciente.tipo_auxilio_aprovado.all %}
+                                                    <a
+                                                        href="#" class="badge badge-soft-primary font-size-11 m-1"
+                                                        data-toggle="tooltip" data-placement="top" title="{{ auxilio.nome }}"
+                                                    >
+                                                        {{ auxilio.abreviacao }}
+                                                    </a>
+                                                    {% endfor %}
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ paciente.cpf }}
+                                        </td>
+                                        <td>
+                                            <ul class="list-inline font-size-20 contact-links mb-0">
+                                                {% if user.is_assistente_social %}
+                                                    <li class="list-inline-item px-2">
+                                                        <a href="{% url 'pacientes:editar_paciente' pk=paciente.pk %}" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bx bx-edit"></i></a>
+                                                    </li>
+                                                {% endif %}
+                                                <li class="list-inline-item px-2">
+                                                    <a href="{% url 'pacientes:perfil_paciente' pk=paciente.pk %}" data-toggle="tooltip" data-placement="top" title="Perfil"><i class="bx bx-user-circle"></i></a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card card-body text-center">
+                <h3>Gráficos</h3>
+
+                <div class="d-lg-flex">
+                    <div class="col-lg-4 mb-3">
+                        <canvas id="grafico-cidade"></canvas>
+                    </div>
+
+                    <div class="col-lg-4 mb-3">
+                        <canvas id="grafico-doencas"></canvas>
+                    </div>
+
+                    <div class="col-lg-4 mb-3">
+                        <canvas id="grafico-sexo"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'assets/libs/chart.js/Chart.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+
+    <script>
+        var tema = sessionStorage.getItem('is_visited');
+        var cor = (tema == 'dark-mode-switch') ? '#fff' : '#333';
+        Chart.defaults.global.defaultFontColor = cor;
+        var ctx = document.getElementById('grafico-cidade');
+        var graficoCidade = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [
+                    {% for cidade in cidades %}
+                        {% if cidade.quantidade > 0 %}
+                        '{{ cidade.nome }}',
+                        {% endif %}
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Pacientes por cidade',
+                    data: [
+                      {% for cidade in cidades %}
+                        {% if cidade.quantidade > 0 %}
+                          '{{ cidade.quantidade }}',
+                        {% endif %}
+                      {% endfor %}
+                    ],
+                    backgroundColor: [
+                        'rgba(52, 82, 225, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(45, 132, 247, 0.8)',
+                        'rgba(115, 43, 237, 0.8)',
+                        'rgba(43, 177, 237, 0.8)',
+                        'rgba(65, 45, 247, 0.8)',
+                    ],
+                    borderWidth: 0
+                }]
+            }
+        });
+
+        var ctx_2 = document.getElementById('grafico-doencas');
+        var graficoDoenca = new Chart(ctx_2, {
+            type: 'horizontalBar',
+            data: {
+                labels: [
+                    {% for doenca in doencas_comuns %}
+                        '{{ doenca.nome }}',
+                    {% endfor %}
+                ],
+                datasets: [{
+                    label: 'Doenças comuns',
+                    data: [
+                      {% for doenca in doencas_comuns %}
+                          '{{ doenca.quantidade }}',
+                      {% endfor %}
+                    ],
+                    backgroundColor: [
+                        'rgba(115, 43, 237, 0.8)',
+                        'rgba(65, 45, 247, 0.8)',
+                        'rgba(52, 82, 225, 0.8)',
+                        'rgba(45, 132, 247, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(43, 177, 237, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var ctx_3 = document.getElementById('grafico-sexo');
+        var graficoDoenca = new Chart(ctx_3, {
+            type: 'doughnut',
+            data: {
+                labels: ['Masculino', 'Feminino', 'Outro'],
+                datasets: [{
+                    label: 'Pacientes por sexo',
+                    data: [
+                        {% for pacientes in paciente_sexo %}
+                            {{ pacientes }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: [
+                        'rgba(65, 45, 247, 0.8)',
+                        'rgba(153, 102, 255, 0.8)',
+                        'rgba(45, 132, 247, 0.8)'
+                    ],
+                    borderWidth: 0
+                }]
+            }
+        });
+    </script>
+
+    {% include 'utilitarios/configuracao_data_table.html' with tipo="pacientes" %}
+{% endblock %}

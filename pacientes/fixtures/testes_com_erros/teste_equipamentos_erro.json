@@ -1,0 +1,92 @@
+[
+  {
+    "model": "pacientes.equipamento",
+    "pk": 1,
+    "fields": {
+      "etiqueta": 1234,
+      "nome": "Maleta",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 2,
+    "fields": {
+      "etiqueta": "abc def",
+      "nome": "&*¨%#@%!)",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 3,
+    "fields": {
+      "etiqueta": "AEY-982",
+      "nome": 2753,
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 4,
+    "fields": {
+      "etiqueta": "0-q-1-2-5-a",
+      "nome": true,
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 5,
+    "fields": {
+      "etiqueta": -345,
+      "nome": "Alicate",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 6,
+    "fields": {
+      "etiqueta": 0,
+      "nome": "M@l4",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 7,
+    "fields": {
+      "etiqueta": "AxT3iY7",
+      "nome": "@#%¨&@#}{^`:}",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 8,
+    "fields": {
+      "etiqueta": " '(olá mundo)' ",
+      "nome": "Computador",
+      "emprestado": false
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 9,
+    "fields": {
+      "etiqueta": false,
+      "nome": "Atom",
+      "emprestado": true
+    }
+  },
+  {
+    "model": "pacientes.equipamento",
+    "pk": 10,
+    "fields": {
+      "etiqueta": "-=am4ad~ç4",
+      "nome": 0,
+      "emprestado": false
+    }
+  }
+]
