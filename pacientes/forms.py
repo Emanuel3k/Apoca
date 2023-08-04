@@ -71,7 +71,7 @@ class FormPaciente(ModelForm):
             Row(
                 Column('nome', css_class='col-lg-6'),
                 Column('data_nascimento', css_class='col-lg-3'),
-                Column(InlineRadios('sexo'), css_class='col-lg-3')
+                Column('sexo', css_class='col-lg-3')
             ),
             Row(
                 Column('raca', css_class='col-lg-2'),
