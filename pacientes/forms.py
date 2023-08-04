@@ -262,7 +262,7 @@ class FormEquipamento(ModelForm):
     def __init__(self, *args, **kwargs):
         super(FormEquipamento, self).__init__(*args, **kwargs)
         self.helper = FormHelper(self)
-        self.helper.form_method = 'post'
+        self.helper.form_method = 'POST'
         self.helper.attrs = {'novalidate': ''}
         self.helper.layout = Layout(
             Row(
