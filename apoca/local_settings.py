@@ -1,8 +1,8 @@
-SECRET_KEY = ''
+SECRET_KEY = '112'
 DEBUG = True
 
 DB_PASSWORD = '31415'
-DB_USER = 'Winpenning'
+DB_USER = 'root'
 DB_NAME = 'apoca'
 DB_HOST = ''
 DB_PORT = '3306'
