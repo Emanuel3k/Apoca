@@ -1,0 +1,17 @@
+local_settings.py
+myvenv/
+venv/
+/static
+media/
+backups/
+token.json
+client_secrets.json
+OAuth_token.json
+__pycache__
+*.pyc
+*~
+*.log
+settings.yaml
+criar_usuarios.py
+templates/bootstrap4
+.vscode
