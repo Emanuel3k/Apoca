@@ -20,12 +20,10 @@ python3 -m pip install --upgrade pip
 primeiro realizar a instalacao  e configuracao do banco de dados  
 pip install -r requirements.txt  
 
-apagar as migrations existentes nos apps, deixar __init__.py e __pycache__  
 python manage.py makemigrations  
 python manage.py migrate  
 
 python manage.py createsuperuser  
-
 
 python manage.py runserver  
 acessar: http://127.0.0.1:8000/  
