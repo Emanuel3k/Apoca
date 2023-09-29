@@ -1,9 +1,9 @@
-SECRET_KEY = '112'
+SECRET_KEY = ''
 DEBUG = True
 
-DB_PASSWORD = '31415'
-DB_USER = 'root'
-DB_NAME = 'apoca'
+DB_PASSWORD = ''
+DB_USER = ''
+DB_NAME = ''
 DB_HOST = ''
-DB_PORT = '3306'
+DB_PORT = ''
 DB_TEST = ''
