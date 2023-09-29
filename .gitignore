@@ -1,6 +1,7 @@
 local_settings.py
 myvenv/
 venv/
+migrations/
 /static
 media/
 backups/
