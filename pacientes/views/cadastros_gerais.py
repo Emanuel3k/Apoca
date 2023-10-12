@@ -83,9 +83,10 @@ def equipamentos(request):
 @assistente_social_required
 @login_required
 def cadastrar_equipamento(request):
-    form = FormEquipamento(request.POST or None)
+    form = FormEquipamento(request.POST or None or request.GET)
+    formulario = FormEquipamento()
 
-    if request.method == 'POST':
+    if request.method == 'POST' or request.method == 'GET':
         if form.is_valid():
             equipamento_repetido = Equipamento.objects.filter(etiqueta=form.cleaned_data['etiqueta'])
             if equipamento_repetido:
@@ -95,7 +96,7 @@ def cadastrar_equipamento(request):
                 messages.success(request, 'Equipamento cadastrado com sucesso!')
                 return redirect('pacientes:equipamentos')
 
-    return render(request, 'cadastros_gerais/equipamento/cadastro_equipamento.html', {'form': form})
+    return render(request=request,context={'form': formulario} ,template_name='cadastros_gerais/equipamento/cadastro_equipamento.html')
 
 
 @assistente_social_required

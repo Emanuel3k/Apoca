@@ -17,9 +17,24 @@ def inicio(request):
     data_inicio = datetime.today() - relativedelta(months=1)
     racas = consulta_racas()
 
+    # lista de equipamentos empresados a mais de 60 dias
+    equipamentosAuxilio = Auxilio.objects.select_related('equipamento').filter(
+        tipo__abreviacao='EE',
+        data_retirada__lte=(datetime.today() - relativedelta(days=60)),
+        equipamento__emprestado=True,
+        data_devolucao__isnull=True,
+    ).order_by('data_retirada')
+
+    equipamentosAuxilio = equipamentosAuxilio.all()
+
+    print(equipamentosAuxilio.query)
+
+    # mostrando conteudo recebido do banco de dados
+    print(equipamentosAuxilio)
+
     return render(request, 'pacientes/index.html', {
         'pacientes': pacientes, 'atv_diaria': atv_diaria, 'cidades': cidades,
-        'data_inicio': data_inicio, 'racas': racas
+        'data_inicio': data_inicio, 'racas': racas, 'equipamentosAuxilio': equipamentosAuxilio
     })
 
 

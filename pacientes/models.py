@@ -12,7 +12,8 @@ class Paciente(models.Model):
     SEXO_CHOICES = (
         ('Masculino', 'Masculino'),
         ('Feminino', 'Feminino'),
-        ('Outro', 'Outro')
+        ('Outro', 'Outro'),
+        ("nulo", "nulo")
     )
 
     RACA_CHOICES = (
