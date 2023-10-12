@@ -19,6 +19,7 @@ urlpatterns = [
     path('auxilios/', views.listar_auxilios, name='listar_auxilios'),
     path('auxilios/equipamentos_emprestados', views.listar_equipamentos_emprestados, name='listar_equipamentos_emprestados'),
     path('auxilios/<int:pk>/registrar_devolucao', views.registrar_devolucao, name='registrar_devolucao'),
+    path('auxilios/<int:pk>/renovar_emprestimo', views.renovar_emprestimo, name='renovar_emprestimo'),
     path('auxilios/<int:pk>/detalhes_auxilio', views.detalhes_auxilio, name='detalhes_auxilio'),
 
     # URLS ajax

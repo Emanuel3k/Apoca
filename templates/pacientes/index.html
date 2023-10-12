@@ -229,7 +229,8 @@
                   {{ equipamento.equipamento.nome }}
                 </td>
                 <td>
-                  <a href="{% url 'pacientes:registrar_devolucao' pk=equipamento.pk %}" data-toggle="tooltip" data-placement="top" title="Registrar devolução"><i class="bx bx-check-circle"></i></a>
+                  
+                  <h3><a class="ml-1" href="{% url 'pacientes:registrar_devolucao' pk=equipamento.pk %}" data-toggle="tooltip" data-placement="top" title="Registrar devolução"><i class="bx bx-check-circle"></i></a> <a href="{% url 'pacientes:renovar_emprestimo' pk=equipamento.pk %}" data-toggle="tooltip" data-placement="top" title="Renovar Empréstimo"><i class="fas fa-exchange-alt"></i></a></h3>
                 </td>
               </tr>
             {% endfor %}

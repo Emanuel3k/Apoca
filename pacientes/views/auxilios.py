@@ -1,4 +1,6 @@
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
+from django.forms import ModelChoiceField
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
 
@@ -29,6 +31,8 @@ def listar_auxilios(request):
 @login_required
 def cadastrar_auxilio(request, pk):
     form_auxilio = FormAuxilio(request.POST or None)
+    form_auxilio.fields['equipamento'] = ModelChoiceField(queryset=Equipamento.objects.filter(emprestado=False))
+    print(form_auxilio.fields['equipamento'])
     paciente = get_object_or_404(Paciente, pk=pk)
     if request.method == "POST":
         if form_auxilio.is_valid():
@@ -45,8 +49,12 @@ def cadastrar_auxilio(request, pk):
                     return render(request, 'auxilios/cadastro_auxilio.html', {'form': form_auxilio})
                 else:
                     equipamento = get_object_or_404(Equipamento, pk=auxilio.equipamento.id)
-                    equipamento.emprestado = True
-                    equipamento.save()
+                    if(equipamento.emprestado):
+                        messages.error(request, 'Equipamento já está emprestado.')
+                        return render(request, 'auxilios/cadastro_auxilio.html', {'form': form_auxilio})
+                    else:
+                        equipamento.emprestado = True
+                        equipamento.save()
             else:
                 auxilio.equipamento = None
             
@@ -124,7 +132,7 @@ def registrar_devolucao(request, pk):
                     messages.error(request, 'Informe a hora de devolução.')
                 else:
                     auxilio.equipamento.emprestado = False
-                    form_auxilio.save()
+                    auxilio.equipamento.save()
                     messages.success(request, 'Devolução registrada com sucesso!')
                     return redirect('pacientes:listar_equipamentos_emprestados')
             else:
@@ -136,6 +144,30 @@ def registrar_devolucao(request, pk):
         form_auxilio = FormDevolucao(instance=auxilio)
 
     return render(request, 'auxilios/registro_devolucao.html', {'form': form_auxilio, 'auxilio': auxilio})
+
+@assistente_social_required
+@login_required
+def renovar_emprestimo(request, pk):
+    auxilio_antigo = get_object_or_404(Auxilio, pk=pk)
+    auxilio_antigo.data_devolucao = datetime.today().strftime('%Y-%m-%d')
+    auxilio_antigo.hora_devolucao = datetime.today().strftime('%H:%M:%S')
+
+    auxilio = Auxilio()
+    auxilio.tipo = auxilio_antigo.tipo
+    auxilio.data_retirada = datetime.today().strftime('%Y-%m-%d')
+    auxilio.hora_retirada = datetime.today().strftime('%H:%M:%S')
+    auxilio.observacao = auxilio_antigo.observacao
+    auxilio.quantidade = auxilio_antigo.quantidade
+    auxilio.equipamento = auxilio_antigo.equipamento
+    auxilio.tipo = auxilio_antigo.tipo
+    auxilio.paciente = auxilio_antigo.paciente
+
+    auxilio.save()
+    auxilio_antigo.save()
+    
+    return redirect("/")
+
+
 
 @login_required
 def detalhes_auxilio(request, pk):
