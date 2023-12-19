@@ -16,7 +16,7 @@ class FormPaciente(ModelForm):
             'diabetes', 'logradouro', 'numero', 'bairro', 'complemento', 'referencia',
             'cidade', 'cep', 'doenca', 'descricao_metastase', 'data_cadastro',
             'vulnerabilidade_social', 'tipo_auxilio_aprovado', 'orgao_expedidor',
-            'observacao_renda'
+            'observacao_renda', 'paciente', 'comodatario'
         ]
 
     # Renda familiar
@@ -92,6 +92,10 @@ class FormPaciente(ModelForm):
                 Column('ddd_3', css_class='col-lg-1', required=False),
                 Column('telefone_3', css_class='col-lg-3', required=False),
                 Column('data_cadastro', css_class='col-lg-4')
+            ),
+            Row(
+                Column('paciente', css_class='col-lg-2'),
+                Column('comodatario', css_class='col-lg-2')
             ),
             Row(
                 HTML("<h3>Dados financeiros e familiares</h3>"),

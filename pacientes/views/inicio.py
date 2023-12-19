@@ -27,11 +27,6 @@ def inicio(request):
 
     equipamentosAuxilio = equipamentosAuxilio.all()
 
-    print(equipamentosAuxilio.query)
-
-    # mostrando conteudo recebido do banco de dados
-    print(equipamentosAuxilio)
-
     return render(request, 'pacientes/index.html', {
         'pacientes': pacientes, 'atv_diaria': atv_diaria, 'cidades': cidades,
         'data_inicio': data_inicio, 'racas': racas, 'equipamentosAuxilio': equipamentosAuxilio
