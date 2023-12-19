@@ -64,6 +64,8 @@ class Paciente(models.Model):
     ativo = models.BooleanField(default=True)
     data_cadastro = models.DateField('Data de cadastro')
     tipo_auxilio_aprovado = models.ManyToManyField('pacientes.TipoAuxilio', blank=True)
+    paciente = models.BooleanField(default=True)
+    comodatario = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nome

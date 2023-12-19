@@ -93,6 +93,12 @@
 
                                 <h6 class="mb-0">Data de cadastro</h6>
                                 <p class="text-muted mb-3" id="data-cadastro">{{ paciente.data_cadastro|date:'d/m/Y' }}</p>
+                                
+                                <h6 class="mb-0">Paciente</h6>
+                                <p class="text-muted mb-3">{{ paciente.paciente|yesno:"Sim,Não" }}</p>
+
+                                <h6 class="mb-0">Comodatario</h6>
+                                <p class="text-muted mb-3">{{ paciente.comodatario|yesno:"Sim,Não" }}</p>
 
                                 {% if user.is_assistente_social %}
                                     <a href="{% url 'pacientes:editar_paciente' pk=paciente.id %}" class="btn btn-sm btn-warning mr-4 mb-2">
@@ -101,7 +107,7 @@
                                     <!-- Botão para desativar/ativar paciente -->
                                     {% if paciente.ativo %}
                                         <a href="#" class="btn btn-danger btn-sm mb-2" data-toggle="modal" data-target="#modal-status">
-                                            Desativar paciente
+                                            Desativar cadastro
                                         </a>
                                     {% else %}
                                         <a href="#" class="btn btn-primary btn-sm mb-2" data-toggle="modal" data-target="#modal-status">
